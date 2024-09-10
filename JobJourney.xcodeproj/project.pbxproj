@@ -16,6 +16,11 @@
 		E22A38902BFCCACA005ACBB5 /* SidebarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22A388F2BFCCACA005ACBB5 /* SidebarView.swift */; };
 		E22A38922BFCCAE6005ACBB5 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22A38912BFCCAE6005ACBB5 /* DetailView.swift */; };
 		E22A38942BFCCD26005ACBB5 /* Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22A38932BFCCD26005ACBB5 /* Filter.swift */; };
+		E26C71882C09241600CC4474 /* JobRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = E26C71872C09241600CC4474 /* JobRow.swift */; };
+		E27283B12C0E44B70011A906 /* JobView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E27283B02C0E44B60011A906 /* JobView.swift */; };
+		E27283B32C0E44C70011A906 /* NoJobView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E27283B22C0E44C70011A906 /* NoJobView.swift */; };
+		E2C643242C02059600548E24 /* Job-CoreDataHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2C643232C02059600548E24 /* Job-CoreDataHelpers.swift */; };
+		E2C643262C02076A00548E24 /* Tag-CoreDataHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2C643252C02076A00548E24 /* Tag-CoreDataHelpers.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +36,11 @@
 		E22A388F2BFCCACA005ACBB5 /* SidebarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarView.swift; sourceTree = "<group>"; };
 		E22A38912BFCCAE6005ACBB5 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		E22A38932BFCCD26005ACBB5 /* Filter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Filter.swift; sourceTree = "<group>"; };
+		E26C71872C09241600CC4474 /* JobRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobRow.swift; sourceTree = "<group>"; };
+		E27283B02C0E44B60011A906 /* JobView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobView.swift; sourceTree = "<group>"; };
+		E27283B22C0E44C70011A906 /* NoJobView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoJobView.swift; sourceTree = "<group>"; };
+		E2C643232C02059600548E24 /* Job-CoreDataHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Job-CoreDataHelpers.swift"; sourceTree = "<group>"; };
+		E2C643252C02076A00548E24 /* Tag-CoreDataHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Tag-CoreDataHelpers.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,10 +76,15 @@
 				E22A388E2BFCC76E005ACBB5 /* Info.plist */,
 				E22A387A2BFCC56B005ACBB5 /* JobJourneyApp.swift */,
 				E22A38932BFCCD26005ACBB5 /* Filter.swift */,
-				E22A388C2BFCC6E5005ACBB5 /* DataController.swift */,
 				E22A388F2BFCCACA005ACBB5 /* SidebarView.swift */,
+				E22A388C2BFCC6E5005ACBB5 /* DataController.swift */,
 				E22A387C2BFCC56B005ACBB5 /* ContentView.swift */,
+				E26C71872C09241600CC4474 /* JobRow.swift */,
 				E22A38912BFCCAE6005ACBB5 /* DetailView.swift */,
+				E27283B02C0E44B60011A906 /* JobView.swift */,
+				E27283B22C0E44C70011A906 /* NoJobView.swift */,
+				E2C643232C02059600548E24 /* Job-CoreDataHelpers.swift */,
+				E2C643252C02076A00548E24 /* Tag-CoreDataHelpers.swift */,
 				E22A38892BFCC59A005ACBB5 /* Main.xcdatamodeld */,
 				E22A387E2BFCC56D005ACBB5 /* Assets.xcassets */,
 				E22A38802BFCC56D005ACBB5 /* JobJourney.entitlements */,
@@ -157,12 +172,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				E22A38942BFCCD26005ACBB5 /* Filter.swift in Sources */,
+				E27283B32C0E44C70011A906 /* NoJobView.swift in Sources */,
+				E2C643262C02076A00548E24 /* Tag-CoreDataHelpers.swift in Sources */,
+				E26C71882C09241600CC4474 /* JobRow.swift in Sources */,
 				E22A388B2BFCC59A005ACBB5 /* Main.xcdatamodeld in Sources */,
+				E2C643242C02059600548E24 /* Job-CoreDataHelpers.swift in Sources */,
 				E22A38922BFCCAE6005ACBB5 /* DetailView.swift in Sources */,
 				E22A388D2BFCC6E5005ACBB5 /* DataController.swift in Sources */,
 				E22A38902BFCCACA005ACBB5 /* SidebarView.swift in Sources */,
 				E22A387D2BFCC56B005ACBB5 /* ContentView.swift in Sources */,
 				E22A387B2BFCC56B005ACBB5 /* JobJourneyApp.swift in Sources */,
+				E27283B12C0E44B70011A906 /* JobView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

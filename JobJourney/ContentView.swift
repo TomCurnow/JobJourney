@@ -8,14 +8,32 @@
 import SwiftUI
 
 struct ContentView: View {
+    @EnvironmentObject var dataController: DataController
+    
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Content")
+        List (selection: $dataController.selectedJob) {
+            ForEach(dataController.jobsForSelectedFilter()) { job in
+                JobRow(job: job)
+            }
+            .onDelete(perform: delete)
         }
-        .padding()
+        .navigationTitle("Jobs")
+        .searchable(
+            text: $dataController.filterText,
+            tokens: $dataController.filterTokens,
+            suggestedTokens: .constant(dataController.suggestedFilterTokens),
+            prompt: "Search, or type # to add tags") { tag in
+                Text(tag.tagName)
+        }
+    }
+    
+    func delete(_ offsets: IndexSet) {
+        let jobs = dataController.jobsForSelectedFilter()
+        
+        for offset in offsets {
+            let item = jobs[offset]
+            dataController.delete(item)
+        }
     }
 }
 

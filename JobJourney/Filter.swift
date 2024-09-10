@@ -13,9 +13,10 @@ struct Filter: Identifiable, Hashable {
     var icon: String
     var minAppliedDate = Date.distantPast
     var tag: Tag?
-    
+
     static var all = Filter(id: UUID(), name: "All Jobs", icon: "tray")
-    static var recent = Filter(id: UUID(), name: "Recent Jobs", icon: "clock", minAppliedDate: .now.addingTimeInterval(86400 * -7))
+    // Will show all jobs created in the past week
+    static var recent = Filter(id: UUID(), name: "Recently Applied", icon: "clock", minAppliedDate: .now.addingTimeInterval(86400 * -7))
     
     // Custom hashable conformance - two filters are the same if their id's are the same
     func hash(into hasher: inout Hasher) {
