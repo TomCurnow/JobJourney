@@ -11,6 +11,15 @@ struct JobView: View {
     @EnvironmentObject var dataController: DataController
     @ObservedObject var job: Job
     
+    private var appliedDateText: String {
+        if job.applied {
+            if let appliedDate = job.appliedDate {
+                return " on " + appliedDate.formatted(date: .long, time: .shortened)
+            }
+        }
+        return ""
+    }
+    
     var body: some View {
         Form {
             Section {
@@ -18,7 +27,7 @@ struct JobView: View {
                     TextField("Title", text: $job.jobTitle, prompt: Text("Enter the job title here."))
                     Text("**Created** \(job.jobCreationDate.formatted(date: .long, time: .shortened))")
                         .foregroundStyle(.secondary)
-                    Text("**Status** \(job.jobAppliedStatus)")
+                    Text("**Status** \(job.jobAppliedStatus)\(appliedDateText)")
                         .foregroundStyle(.secondary)
                 }
                 

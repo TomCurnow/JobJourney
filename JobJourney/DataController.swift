@@ -9,6 +9,16 @@
 
 import CoreData
 
+// raw value is core data attribute name
+enum SortType: String {
+    case dateCreated = "creationDate"
+    case dateApplied = "appliedDate"
+}
+
+enum Status {
+    case all, applied, notApplied
+}
+
 class DataController: ObservableObject {
     let container: NSPersistentCloudKitContainer
     
@@ -16,9 +26,17 @@ class DataController: ObservableObject {
     @Published var selectedJob: Job?
     
     @Published var filterText = ""
-    
     /// User's selected filter tags
     @Published var filterTokens = [Tag]()
+    
+    /// Global on/off for the filter
+    @Published var filterEnabled = false
+    /// Current filter status
+    @Published var filterStatus = Status.all
+    /// Sort type used by the filter
+    @Published var sortType = SortType.dateCreated
+    /// Date sort method used by the filter
+    @Published var sortNewestFirst = true
     
     private var saveTask: Task<Void, Error>?
     
@@ -97,7 +115,7 @@ class DataController: ObservableObject {
             
             let today = Date()
             
-            for _ in 1...Int.random(in: 2...10) {
+            for _ in 1...Int.random(in: 2...12) {
                 let job = Job(context: viewContext)
                 job.companyName = sampleCompanies.randomElement()
                 job.title = sampleJobLevels.randomElement()! + sampleJobTitles.randomElement()!
@@ -105,11 +123,11 @@ class DataController: ObservableObject {
                 
                 job.applied = Bool.random()
                 if job.applied {
-                    job.appliedDate = Calendar.current.date(byAdding: .day, value: -(Int.random(in: 0...10)), to: today)
+                    job.appliedDate = Calendar.current.date(byAdding: .day, value: -(Int.random(in: 0...5)), to: today)
                 }
                 
                 job.notes = String(repeating: "Here is some room for your own personal notes. ", count: Int.random(in: 0...5))
-                job.creationDate = Calendar.current.date(byAdding: .day, value: -(Int.random(in: 4...21)), to: today)
+                job.creationDate = Calendar.current.date(byAdding: .day, value: -(Int.random(in: 6...21)), to: today)
                 tag.addToJobs(job)
             }
         }
@@ -212,11 +230,24 @@ class DataController: ObservableObject {
             }
         }
         
+        // Advanced filter options (sort order, type, status)
+        if filterEnabled {
+            // All, applied or not applied
+            if filterStatus != .all {
+                let lookForApplied = filterStatus == .applied
+                let statusFilter = NSPredicate(format: "applied = %@", NSNumber(value: lookForApplied))
+                predicates.append(statusFilter)
+            }
+        }
+        
         // Sending the requets to Core Data
         let request = Job.fetchRequest()
         request.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: predicates)
+        // Sort by our selected sort type and order
+        request.sortDescriptors = [NSSortDescriptor(key: sortType.rawValue, ascending: !sortNewestFirst)]
         let allJobs = (try? container.viewContext.fetch(request)) ?? []
         
-        return allJobs.sorted()
+        //return allJobs.sorted() // Removed this although Paul kept it. I removed it as it overwrites the advanced sort filtering by using ruels set in Job-CoreDataHelpers
+        return allJobs
     }
 }
