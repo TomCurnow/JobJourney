@@ -7,6 +7,18 @@
 
 import SwiftUI
 
+// Used so app can compile on macOS.
+// Navigation bar title display mode is only used when running on iOS.
+extension View {
+    func inlineNavigationBar() -> some View {
+        #if os(iOS)
+        self.navigationBarTitleDisplayMode(.inline)
+        #else
+        self
+        #endif
+    }
+}
+
 struct DetailView: View {
     @EnvironmentObject var dataController: DataController
     
@@ -19,7 +31,7 @@ struct DetailView: View {
             }
         }
         .navigationTitle("Details")
-        .navigationBarTitleDisplayMode(.inline)
+        .inlineNavigationBar()
     }
 }
 
