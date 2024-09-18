@@ -14,6 +14,11 @@ struct SidebarView: View {
     // Load all tags we have in our data store
     @FetchRequest(sortDescriptors: [SortDescriptor(\.name)]) var tags: FetchedResults<Tag>
     
+    // Renaming tag properties
+    @State private var tagToRename: Tag?
+    @State private var renamingTag = false
+    @State private var tagName = ""
+    
     var tagFilters: [Filter] {
         tags.map { tag in
             Filter(id: tag.tagID, name: tag.tagName, icon: "tag", tag: tag)
@@ -35,26 +40,59 @@ struct SidebarView: View {
                     NavigationLink(value: filter) {
                         Label(filter.name, systemImage: filter.icon)
                             .badge(filter.tag?.jobs?.count ?? 0)
+                            .contextMenu {
+                                Button() {
+                                    rename(filter)
+                                } label: {
+                                    Label("Rename", systemImage: "pencil")
+                                }
+                            }
                     }
                 }
                 .onDelete(perform: delete)
             }
         }
         .toolbar {
+            Button(action: dataController.newTag) {
+                Label("Add tag", systemImage: "plus")
+            }
+            
+            // Show the add sample data button if we are running the app from xcode
+            #if DEBUG
             Button {
                 dataController.deleteAll()
                 dataController.createSampleData()
             } label: {
                 Label("ADD SAMPLES", systemImage: "flame")
             }
+            #endif
+        }
+        .alert("Rename tag", isPresented: $renamingTag) {
+            Button("OK", action: completeRename)
+            Button("Cancel", role: .cancel) { }
+            TextField("New Name", text: $tagName)
         }
     }
     
+    // Delete a tag
     func delete(_ offsets: IndexSet) {
         for offset in offsets {
             let item = tags[offset]
             dataController.delete(item)
         }
+    }
+    
+    // Initiate renaming tag process
+    func rename(_ filter: Filter) {
+        tagToRename = filter.tag
+        tagName = filter.name
+        renamingTag = true
+    }
+    
+    // Complete renaming tag process
+    func completeRename() {
+        tagToRename?.name = tagName
+        dataController.save()
     }
 }
 

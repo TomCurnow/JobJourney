@@ -247,7 +247,32 @@ class DataController: ObservableObject {
         request.sortDescriptors = [NSSortDescriptor(key: sortType.rawValue, ascending: !sortNewestFirst)]
         let allJobs = (try? container.viewContext.fetch(request)) ?? []
         
-        //return allJobs.sorted() // Removed this although Paul kept it. I removed it as it overwrites the advanced sort filtering by using ruels set in Job-CoreDataHelpers
+        //return allJobs.sorted() // Removed this although Paul kept it. I removed it as it overwrites the advanced sort filtering by using rules set in Job-CoreDataHelpers
         return allJobs
+    }
+    
+    // Create a new tag
+    func newTag() {
+        let tag = Tag(context: container.viewContext)
+        tag.id = UUID()
+        tag.name = "New Tag"
+        save()
+    }
+    
+    // Create a new job application
+    func newJob() {
+        let job = Job(context: container.viewContext)
+        job.title = "New Job"
+        job.creationDate = .now
+        job.applied = false
+        job.companyName = "ACME"
+        
+        if let tag = selectedFilter?.tag {
+            job.addToTags(tag)
+        }
+        
+        save()
+        
+        selectedJob = job
     }
 }
