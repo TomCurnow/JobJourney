@@ -67,7 +67,7 @@
         "name": "Checking Boxes",
         "description": "Apply for your first job.",
         "color": "Green",
-        "criterion": "closed",
+        "criterion": "applied",
         "value": 1,
         "image": "checkmark.shield.fill"
     },
@@ -75,7 +75,7 @@
         "name": "Rocking it",
         "description": "Apply for 5 jobs.",
         "color": "Green",
-        "criterion": "closed",
+        "criterion": "applied",
         "value": 5,
         "image": "guitars.fill"
     },
@@ -83,7 +83,7 @@
         "name": "Maggy's Den",
         "description": "Apply for 10 jobs.",
         "color": "Green",
-        "criterion": "closed",
+        "criterion": "applied",
         "value": 10,
         "image": "10.square.fill"
     },
@@ -91,7 +91,7 @@
         "name": "Flying high!",
         "description": "Apply for 25 jobs.",
         "color": "Green",
-        "criterion": "closed",
+        "criterion": "applied",
         "value": 25,
         "image": "25.square.fill"
     },
@@ -99,7 +99,7 @@
         "name": "Bullseye!",
         "description": "Apply for 50 jobs.",
         "color": "Green",
-        "criterion": "closed",
+        "criterion": "applied",
         "value": 50,
         "image": "target"
     },
@@ -107,7 +107,7 @@
         "name": "You're On Fire!",
         "description": "Apply for 100 jobs.",
         "color": "Green",
-        "criterion": "closed",
+        "criterion": "applied",
         "value": 100,
         "image": "flame.fill"
     },
@@ -115,7 +115,7 @@
         "name": "Box Ticker in Chief",
         "description": "Apply for 250 jobs.",
         "color": "Green",
-        "criterion": "closed",
+        "criterion": "applied",
         "value": 250,
         "image": "text.badge.checkmark"
     },
@@ -123,7 +123,7 @@
         "name": "Boom!",
         "description": "Apply for 500 jobs.",
         "color": "Green",
-        "criterion": "closed",
+        "criterion": "applied",
         "value": 500,
         "image": "bolt.circle.fill"
     },

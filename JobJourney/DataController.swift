@@ -275,4 +275,41 @@ class DataController: ObservableObject {
         
         selectedJob = job
     }
+    
+    
+    // returns a count for the number of results of a given query
+    func count<T>(for fetchRequest: NSFetchRequest<T>) -> Int {
+        (try? container.viewContext.count(for: fetchRequest)) ?? 0
+    }
+    
+    // Returns true or false for whether the user has earned the given award
+    func hasEarned(award: Award) -> Bool {
+        switch award.criterion {
+            case "jobs":
+                // return true if they added a certain number of job applications
+                let fetchRequest = Job.fetchRequest()
+                let awardCount = count(for: fetchRequest)
+                return awardCount >= award.value
+                
+            case "applied":
+                // return true if they applied for a certain number of jobs
+                let fetchRequest = Job.fetchRequest()
+                fetchRequest.predicate = NSPredicate(format: "applied = true")
+                let awardCount = count(for: fetchRequest)
+                return awardCount >= award.value
+                
+            case "tags":
+                // return true if they created a certain number of tags
+                let fetchRequest = Tag.fetchRequest()
+                let awardCount = count(for: fetchRequest)
+                return awardCount >= award.value
+                
+            case "unlock":
+                // to be completed later in the course
+                return false
+                
+            default:
+                fatalError("Unknown award criterion: \(award.criterion)")
+        }
+    }
 }
