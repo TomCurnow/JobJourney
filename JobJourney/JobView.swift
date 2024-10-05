@@ -74,6 +74,22 @@ struct JobView: View {
         .onReceive(job.objectWillChange) { _ in
             dataController.queueSave()
         }
+        // Immediately calls a send on pressing enter having filled a text field
+        .onSubmit(dataController.save)
+        .toolbar {
+            Menu {
+                Button {
+                    job.applied.toggle()
+                    job.appliedDate = job.applied ? .now : nil
+                    dataController.save()
+                } label: {
+                    Label(job.applied ? "Mark as Not Applied" : "Mark as Applied", systemImage: "paperplane.circle")
+                }
+                 
+            } label: {
+                Label("Actions", systemImage: "ellipsis.circle")
+            }
+        }
     }
 }
 

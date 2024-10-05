@@ -138,6 +138,9 @@ class DataController: ObservableObject {
     
     // So can call save, and will only be performed if changes have been made to the container
     func save() {
+        //Cancel any queued saved tasks as about to save immediately
+        saveTask?.cancel()
+        
         if container.viewContext.hasChanges {
             try? container.viewContext.save()
         }
@@ -246,8 +249,6 @@ class DataController: ObservableObject {
         // Sort by our selected sort type and order
         request.sortDescriptors = [NSSortDescriptor(key: sortType.rawValue, ascending: !sortNewestFirst)]
         let allJobs = (try? container.viewContext.fetch(request)) ?? []
-        
-        //return allJobs.sorted() // Removed this although Paul kept it. I removed it as it overwrites the advanced sort filtering by using rules set in Job-CoreDataHelpers
         return allJobs
     }
     

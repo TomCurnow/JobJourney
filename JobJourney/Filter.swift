@@ -13,6 +13,10 @@ struct Filter: Identifiable, Hashable {
     var icon: String
     var minAppliedDate = Date.distantPast
     var tag: Tag?
+    
+    var jobsCount: Int {
+        tag?.tagJobs.count ?? 0
+    }
 
     static var all = Filter(id: UUID(), name: "All Jobs", icon: "tray")
     // Will show all jobs created in the past week

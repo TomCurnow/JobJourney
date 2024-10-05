@@ -42,14 +42,23 @@ struct SidebarView: View {
                 ForEach(tagFilters) { filter in
                     NavigationLink(value: filter) {
                         Label(filter.name, systemImage: filter.icon)
-                            .badge(filter.tag?.jobs?.count ?? 0)
+                            .badge(filter.jobsCount)
                             .contextMenu {
                                 Button() {
                                     rename(filter)
                                 } label: {
                                     Label("Rename", systemImage: "pencil")
                                 }
+                                
+                                Button(role: .destructive) {
+                                    delete(filter)
+                                } label: {
+                                    Label("Delete", systemImage: "trash")
+                                }
                             }
+                            .accessibilityElement()
+                            .accessibilityLabel(filter.name)
+                            .accessibilityHint("^[\(filter.jobsCount) job](inflect: true)")
                     }
                 }
                 .onDelete(perform: delete)
@@ -82,14 +91,22 @@ struct SidebarView: View {
             TextField("New Name", text: $tagName)
         }
         .sheet(isPresented: $showingAwards, content: AwardsView.init)
+        .navigationTitle("Filters")
     }
     
-    // Delete a tag
+    // Delete a tag. Used for on swipe.
     func delete(_ offsets: IndexSet) {
         for offset in offsets {
             let item = tags[offset]
             dataController.delete(item)
         }
+    }
+    
+    // Delete a tage. Used forcontext menu.
+    func delete(_ filter: Filter) {
+        guard let tag = filter.tag else { return }
+        dataController.delete(tag)
+        dataController.save()
     }
     
     // Initiate renaming tag process

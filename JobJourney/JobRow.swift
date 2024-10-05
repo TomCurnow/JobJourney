@@ -31,6 +31,7 @@ struct JobRow: View {
                 
                 VStack(alignment: .trailing) {
                     Text(job.jobCreationDate.formatted(date: .numeric, time: .omitted))
+                        .accessibilityLabel(job.jobCreationDate.formatted(date: .abbreviated, time: .omitted))
                         .font(.subheadline)
                 }
                 .foregroundStyle(.secondary)

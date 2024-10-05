@@ -2,7 +2,7 @@
     {
         "name": "First Steps",
         "description": "Add your first job.",
-        "color": "Light Blue",
+        "color": "Custom Light Blue",
         "criterion": "jobs",
         "value": 1,
         "image": "figure.walk"
@@ -10,7 +10,7 @@
     {
         "name": "A Great Start",
         "description": "Add 5 jobs.",
-        "color": "Light Blue",
+        "color": "Custom Light Blue",
         "criterion": "jobs",
         "value": 5,
         "image": "hand.thumbsup.fill"
@@ -18,7 +18,7 @@
     {
         "name": "Moving On Up",
         "description": "Add 10 jobs.",
-        "color": "Light Blue",
+        "color": "Custom Light Blue",
         "criterion": "jobs",
         "value": 10,
         "image": "tray.and.arrow.up.fill"
@@ -26,7 +26,7 @@
     {
         "name": "Gathering Speed",
         "description": "Add 25 jobs.",
-        "color": "Light Blue",
+        "color": "Custom Light Blue",
         "criterion": "jobs",
         "value": 25,
         "image": "speedometer"
@@ -34,7 +34,7 @@
     {
         "name": "Making Waves",
         "description": "Add 50 jobs.",
-        "color": "Light Blue",
+        "color": "Custom Light Blue",
         "criterion": "jobs",
         "value": 50,
         "image": "dot.radiowaves.left.and.right"
@@ -42,7 +42,7 @@
     {
         "name": "High Performer",
         "description": "Add 100 jobs.",
-        "color": "Light Blue",
+        "color": "Custom Light Blue",
         "criterion": "jobs",
         "value": 100,
         "image": "square.stack.3d.up.fill"
@@ -50,7 +50,7 @@
     {
         "name": "Star Performer",
         "description": "Add 250 jobs.",
-        "color": "Light Blue",
+        "color": "Custom Light Blue",
         "criterion": "jobs",
         "value": 250,
         "image": "star.circle.fill"
@@ -58,7 +58,7 @@
     {
         "name": "Champion Performer",
         "description": "Add 500 jobs.",
-        "color": "Light Blue",
+        "color": "Custom Light Blue",
         "criterion": "jobs",
         "value": 500,
         "image": "crown.fill"
@@ -66,7 +66,7 @@
     {
         "name": "Checking Boxes",
         "description": "Apply for your first job.",
-        "color": "Green",
+        "color": "Custom Green",
         "criterion": "applied",
         "value": 1,
         "image": "checkmark.shield.fill"
@@ -74,7 +74,7 @@
     {
         "name": "Rocking it",
         "description": "Apply for 5 jobs.",
-        "color": "Green",
+        "color": "Custom Green",
         "criterion": "applied",
         "value": 5,
         "image": "guitars.fill"
@@ -82,7 +82,7 @@
     {
         "name": "Maggy's Den",
         "description": "Apply for 10 jobs.",
-        "color": "Green",
+        "color": "Custom Green",
         "criterion": "applied",
         "value": 10,
         "image": "10.square.fill"
@@ -90,7 +90,7 @@
     {
         "name": "Flying high!",
         "description": "Apply for 25 jobs.",
-        "color": "Green",
+        "color": "Custom Green",
         "criterion": "applied",
         "value": 25,
         "image": "25.square.fill"
@@ -98,7 +98,7 @@
     {
         "name": "Bullseye!",
         "description": "Apply for 50 jobs.",
-        "color": "Green",
+        "color": "Custom Green",
         "criterion": "applied",
         "value": 50,
         "image": "target"
@@ -106,7 +106,7 @@
     {
         "name": "You're On Fire!",
         "description": "Apply for 100 jobs.",
-        "color": "Green",
+        "color": "Custom Green",
         "criterion": "applied",
         "value": 100,
         "image": "flame.fill"
@@ -114,7 +114,7 @@
     {
         "name": "Box Ticker in Chief",
         "description": "Apply for 250 jobs.",
-        "color": "Green",
+        "color": "Custom Green",
         "criterion": "applied",
         "value": 250,
         "image": "text.badge.checkmark"
@@ -122,7 +122,7 @@
     {
         "name": "Boom!",
         "description": "Apply for 500 jobs.",
-        "color": "Green",
+        "color": "Custom Green",
         "criterion": "applied",
         "value": 500,
         "image": "bolt.circle.fill"
@@ -130,7 +130,7 @@
     {
         "name": "Playing tag",
         "description": "You created your first tag.",
-        "color": "Gold",
+        "color": "Custom Gold",
         "criterion": "tags",
         "value": 1,
         "image": "tag.fill"
@@ -138,7 +138,7 @@
     {
         "name": "Tag wrestling",
         "description": "You've created 10 tags.",
-        "color": "Gold",
+        "color": "Custom Gold",
         "criterion": "tags",
         "value": 10,
         "image": "tag.circle.fill"
@@ -146,7 +146,7 @@
     {
         "name": "Supreme tagger",
         "description": "You've created 50 tags.",
-        "color": "Gold",
+        "color": "Custom Gold",
         "criterion": "tags",
         "value": 50,
         "image": "square.grid.3x1.folder.fill.badge.plus"
@@ -154,7 +154,7 @@
     {
         "name": "Supporter",
         "description": "You bought the premium unlock.",
-        "color": "Purple",
+        "color": "Custom Purple",
         "criterion": "unlock",
         "value": 0,
         "image": "dollarsign.square.fill"
