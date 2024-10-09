@@ -11,6 +11,10 @@ struct JobViewToolbar: View {
     @EnvironmentObject var dataController: DataController
     @ObservedObject var job: Job
     
+    var applyUnapplyJobText: LocalizedStringKey {
+        job.applied ? "Mark as Not Applied" : "Mark as Applied"
+    }
+    
     var body: some View {
         Menu {
             Button {
@@ -18,7 +22,7 @@ struct JobViewToolbar: View {
                 job.appliedDate = job.applied ? .now : nil
                 dataController.save()
             } label: {
-                Label(job.applied ? "Mark as Not Applied" : "Mark as Applied", systemImage: "paperplane.circle")
+                Label(applyUnapplyJobText, systemImage: "paperplane.circle")
             }
             
             Divider()

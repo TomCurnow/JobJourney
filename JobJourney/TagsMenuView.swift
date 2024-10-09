@@ -14,7 +14,7 @@ struct TagsMenuView: View {
     var body: some View {
         Menu {
             ForEach(job.jobTags) { tag in
-                Button{
+                Button {
                     job.removeFromTags(tag) // Method added by xcode
                 } label: {
                     Label(tag.tagName, systemImage: "checkmark")

@@ -11,7 +11,7 @@ struct ContentView: View {
     @EnvironmentObject var dataController: DataController
     
     var body: some View {
-        List (selection: $dataController.selectedJob) {
+        List(selection: $dataController.selectedJob) {
             ForEach(dataController.jobsForSelectedFilter()) { job in
                 JobRow(job: job)
             }

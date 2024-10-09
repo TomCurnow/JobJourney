@@ -5,8 +5,6 @@
 //  Created by Tom Curnow on 21/05/2024.
 //
 
-// TODO: 1. Progress until the Q and A. If not resolved by then, download a later version of the app to see when the tokens feature starts working. Also try using different devices to see if tgs work on those.
-
 import CoreData
 
 // raw value is core data attribute name
@@ -47,7 +45,7 @@ class DataController: ObservableObject {
     }()
     
     // Getting a list of tags which match the first letters types in the search field
-    //TODO: 2. This works, but the updates are not being reflected by the content view. Try removing the .constant from the content view.
+    
     var suggestedFilterTokens: [Tag] {
         guard filterText.starts(with: "#") else {
             return []
@@ -63,7 +61,7 @@ class DataController: ObservableObject {
             request.predicate = NSPredicate(format: "name CONTAINS[c] %@", trimmedFilterText)
         }
 
-        //return (try? container.viewContext.fetch(request).sorted()) ?? []
+        // return (try? container.viewContext.fetch(request).sorted()) ?? []
         return (try? container.viewContext.fetch(request).sorted()) ?? []
     }
     
@@ -79,16 +77,26 @@ class DataController: ObservableObject {
         container.viewContext.automaticallyMergesChangesFromParent = true
         
         // Manage changes to objects on a property by property basis
-        // Core Data will compare each property individually, but if there’s a conflict it should prefer what is currently in memory (on device)
+        // Core Data will compare each property individually, but if there’s
+        // a conflict it should prefer what is currently in memory (on device)
         container.viewContext.mergePolicy = NSMergePolicy.mergeByPropertyObjectTrump
         
         // Make an announcement when changes happen to storage by any code
-        container.persistentStoreDescriptions.first?.setOption(true as NSNumber, forKey: NSPersistentStoreRemoteChangeNotificationPostOptionKey)
+        container.persistentStoreDescriptions.first?.setOption(
+            true as NSNumber,
+            forKey: NSPersistentStoreRemoteChangeNotificationPostOptionKey
+        )
+        
         // When changes happen, please call remoteStoreChanged
-        NotificationCenter.default.addObserver(forName: .NSPersistentStoreRemoteChange, object: container.persistentStoreCoordinator, queue: .main, using: remoteStoreChanged)
+        NotificationCenter.default.addObserver(
+            forName: .NSPersistentStoreRemoteChange,
+            object: container.persistentStoreCoordinator,
+            queue: .main,
+            using: remoteStoreChanged
+        )
         
         // Load data from persistent storage
-        container.loadPersistentStores { storeDescription, error in
+        container.loadPersistentStores { _, error in
             if let error {
                 fatalError("Fatal error loading store: \(error.localizedDescription)")
             }
@@ -102,32 +110,41 @@ class DataController: ObservableObject {
     func createSampleData() {
         // Pool of data in RAM right now
         let viewContext = container.viewContext
-        
-        let sampleCompanies = ["Apple", "Samsung", "Microsoft", "Alphabet", "AT&T", "Amazon", "Netflix", "Walt Disney", "Facebook", "Train", "Intel", "IBM", "Oracle", "SAP", "Rainbow", "Capgemini", "PayPal", "HP", "Dell", "BT", "Adobe", "Nvidia", "OpenAI", "eBay", "Nintendo", "Activision", "Nokia", "Sony", "Instagram", "TikTok"]
-        
+        let sampleCompanies = ["Apple", "Samsung", "Microsoft", "Alphabet", "AT&T", "Amazon", "Netflix",
+                               "Walt Disney", "Facebook", "Train", "Intel", "IBM", "Oracle", "SAP", "Rainbow",
+                               "Capgemini", "PayPal", "HP", "Dell", "BT", "Adobe", "Nvidia", "OpenAI", "eBay",
+                               "Nintendo", "Activision", "Nokia", "Sony", "Instagram", "TikTok"]
         let sampleJobLevels = ["", "Junior ", "Mid-level ", "Senior "]
-        let sampleJobTitles = ["Software Engineer", "iOS Developer", "iOS Engineer", "Swift Developer", "Swift Engineer", "Software Developer", "Tech Lead"]
+        let sampleJobTitles = ["Software Engineer", "iOS Developer", "iOS Engineer", "Swift Developer",
+                               "Swift Engineer", "Software Developer", "Tech Lead"]
         
-        for i in 1...5 {
+        for tagCounter in 1...5 {
             let tag =  Tag(context: viewContext)
             tag.id = UUID()
-            tag.name = "Tag \(i)"
-            
+            tag.name = "Tag \(tagCounter)"
             let today = Date()
             
             for _ in 1...Int.random(in: 2...12) {
                 let job = Job(context: viewContext)
                 job.companyName = sampleCompanies.randomElement()
                 job.title = sampleJobLevels.randomElement()! + sampleJobTitles.randomElement()!
-                job.details = String(repeating: "Information about this specific role should go here. ", count: Int.random(in: 0...50))
-                
+                job.details = String(
+                    repeating: "Information about this specific role should go here. ",
+                    count: Int.random(in: 0...50)
+                )
                 job.applied = Bool.random()
                 if job.applied {
                     job.appliedDate = Calendar.current.date(byAdding: .day, value: -(Int.random(in: 0...5)), to: today)
                 }
-                
-                job.notes = String(repeating: "Here is some room for your own personal notes. ", count: Int.random(in: 0...5))
-                job.creationDate = Calendar.current.date(byAdding: .day, value: -(Int.random(in: 6...21)), to: today)
+                job.notes = String(
+                    repeating: "Here is some room for your own personal notes. ",
+                    count: Int.random(in: 0...5)
+                )
+                job.creationDate = Calendar.current.date(
+                    byAdding: .day,
+                    value: -(Int.random(in: 6...21)),
+                    to: today
+                )
                 tag.addToJobs(job)
             }
         }
@@ -138,7 +155,7 @@ class DataController: ObservableObject {
     
     // So can call save, and will only be performed if changes have been made to the container
     func save() {
-        //Cancel any queued saved tasks as about to save immediately
+        // Cancel any queued saved tasks as about to save immediately
         saveTask?.cancel()
         
         if container.viewContext.hasChanges {
@@ -150,7 +167,7 @@ class DataController: ObservableObject {
     func queueSave() {
         saveTask?.cancel()
 
-        // Body must run on main actor. Better as otherwise the task may be passed between threads which is not a goood idea.
+        // Body must run on main actor. Better as else task may be passed between threads - not a goood idea.
         saveTask = Task { @MainActor in
             try await Task.sleep(for: .seconds(3))
             save()
@@ -159,7 +176,7 @@ class DataController: ObservableObject {
     
     // Single class to delete any object (entity) in our container
     func delete(_ object: NSManagedObject) {
-        objectWillChange.send() //Tell the world it is about to be deleted
+        objectWillChange.send() // Tell the world it is about to be deleted
         container.viewContext.delete(object)
         save()
     }
@@ -167,13 +184,16 @@ class DataController: ObservableObject {
     // Used by deleteAll to delete all entities in the container
     private func delete(_ fetchRequest: NSFetchRequest<NSFetchRequestResult>) {
         let batchDeleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
-        batchDeleteRequest.resultType = .resultTypeObjectIDs // used to tell the batch delete request what will be deleted
+        batchDeleteRequest.resultType = .resultTypeObjectIDs // tell batch delete request what will be deleted
 
         // execute the fetch request, which in this case is a batch delete request
         // Get a batch delete result back, hence the type cast
         if let delete = try? container.viewContext.execute(batchDeleteRequest) as? NSBatchDeleteResult {
             let changes = [NSDeletedObjectsKey: delete.result as? [NSManagedObjectID] ?? []]
-            NSManagedObjectContext.mergeChanges(fromRemoteContextSave: changes, into: [container.viewContext]) // make sure store and view context are in sync
+            NSManagedObjectContext.mergeChanges(
+                fromRemoteContextSave: changes,
+                into: [container.viewContext]
+            ) // make sure store and view context are in sync
         }
     }
     
@@ -220,7 +240,9 @@ class DataController: ObservableObject {
             // A query to get any job where the begining of the title matches the trimmed filter text
             let titlePredicate = NSPredicate(format: "title CONTAINS[c] %@", trimmedFilterText)
             let detailsPredicate = NSPredicate(format: "details CONTAINS[c] %@", trimmedFilterText)
-            let combinedPredicate = NSCompoundPredicate(orPredicateWithSubpredicates: [titlePredicate, detailsPredicate])
+            let combinedPredicate = NSCompoundPredicate(
+                orPredicateWithSubpredicates: [titlePredicate, detailsPredicate]
+            )
             predicates.append(combinedPredicate)
         }
         
@@ -273,10 +295,8 @@ class DataController: ObservableObject {
         }
         
         save()
-        
         selectedJob = job
     }
-    
     
     // returns a count for the number of results of a given query
     func count<T>(for fetchRequest: NSFetchRequest<T>) -> Int {
@@ -286,31 +306,31 @@ class DataController: ObservableObject {
     // Returns true or false for whether the user has earned the given award
     func hasEarned(award: Award) -> Bool {
         switch award.criterion {
-            case "jobs":
-                // return true if they added a certain number of job applications
-                let fetchRequest = Job.fetchRequest()
-                let awardCount = count(for: fetchRequest)
-                return awardCount >= award.value
-                
-            case "applied":
-                // return true if they applied for a certain number of jobs
-                let fetchRequest = Job.fetchRequest()
-                fetchRequest.predicate = NSPredicate(format: "applied = true")
-                let awardCount = count(for: fetchRequest)
-                return awardCount >= award.value
-                
-            case "tags":
-                // return true if they created a certain number of tags
-                let fetchRequest = Tag.fetchRequest()
-                let awardCount = count(for: fetchRequest)
-                return awardCount >= award.value
-                
-            case "unlock":
-                // to be completed later in the course
-                return false
-                
-            default:
-                fatalError("Unknown award criterion: \(award.criterion)")
+        case "jobs":
+            // return true if they added a certain number of job applications
+            let fetchRequest = Job.fetchRequest()
+            let awardCount = count(for: fetchRequest)
+            return awardCount >= award.value
+            
+        case "applied":
+            // return true if they applied for a certain number of jobs
+            let fetchRequest = Job.fetchRequest()
+            fetchRequest.predicate = NSPredicate(format: "applied = true")
+            let awardCount = count(for: fetchRequest)
+            return awardCount >= award.value
+            
+        case "tags":
+            // return true if they created a certain number of tags
+            let fetchRequest = Tag.fetchRequest()
+            let awardCount = count(for: fetchRequest)
+            return awardCount >= award.value
+            
+        case "unlock":
+            // to be completed later in the course
+            return false
+            
+        default:
+            fatalError("Unknown award criterion: \(award.criterion)")
         }
     }
 }

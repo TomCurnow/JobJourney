@@ -80,7 +80,7 @@ extension Job {
 // So that our tag object can return an array of sorted jobs
 // Sort order is by creation date, title, details
 extension Job: Comparable {
-    public static func <(lhs: Job, rhs: Job) -> Bool {
+    public static func < (lhs: Job, rhs: Job) -> Bool {
         let left = lhs.jobCreationDate
         let right = rhs.jobCreationDate
         

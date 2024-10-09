@@ -34,7 +34,7 @@ extension Tag {
 
 // So that our job object can return an array of sorted tags
 extension Tag: Comparable {
-    public static func <(lhs: Tag, rhs: Tag) -> Bool {
+    public static func < (lhs: Tag, rhs: Tag) -> Bool {
         let left = lhs.tagName.localizedLowercase
         let right = rhs.tagName.localizedLowercase
 

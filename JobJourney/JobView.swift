@@ -40,7 +40,12 @@ struct JobView: View {
                         .font(.title2)
                         .foregroundStyle(.secondary)
                     
-                    TextField("Details", text: $job.jobDetails, prompt: Text("Enter the job details here"), axis: .vertical)
+                    TextField(
+                        "Details",
+                        text: $job.jobDetails,
+                        prompt: Text("Enter the job details here"),
+                        axis: .vertical
+                    )
                 }
             }
         }

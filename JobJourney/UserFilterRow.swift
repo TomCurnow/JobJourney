@@ -17,7 +17,7 @@ struct UserFilterRow: View {
             Label(filter.name, systemImage: filter.icon)
                 .badge(filter.jobsCount)
                 .contextMenu {
-                    Button() {
+                    Button {
                         rename(filter)
                     } label: {
                         Label("Rename", systemImage: "pencil")
