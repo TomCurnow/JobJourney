@@ -16,6 +16,15 @@
 		E22A38902BFCCACA005ACBB5 /* SidebarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22A388F2BFCCACA005ACBB5 /* SidebarView.swift */; };
 		E22A38922BFCCAE6005ACBB5 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22A38912BFCCAE6005ACBB5 /* DetailView.swift */; };
 		E22A38942BFCCD26005ACBB5 /* Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22A38932BFCCD26005ACBB5 /* Filter.swift */; };
+		E24270DC2CB57CA500AD5686 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = E24270DB2CB57CA500AD5686 /* Localizable.xcstrings */; };
+		E24270DE2CB5865500AD5686 /* InfoPlist.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = E24270DD2CB5865500AD5686 /* InfoPlist.xcstrings */; };
+		E24270E12CB5E14B00AD5686 /* Awards.json in Resources */ = {isa = PBXBuildFile; fileRef = E24270E02CB5E14B00AD5686 /* Awards.json */; };
+		E24270E42CB6D36300AD5686 /* SidebarViewToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E24270E32CB6D36300AD5686 /* SidebarViewToolbar.swift */; };
+		E24270E62CB6D5E700AD5686 /* JobViewToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E24270E52CB6D5E700AD5686 /* JobViewToolbar.swift */; };
+		E24270E82CB6D6D500AD5686 /* ContentViewToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E24270E72CB6D6D500AD5686 /* ContentViewToolbar.swift */; };
+		E24270EA2CB6D91400AD5686 /* TagsMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E24270E92CB6D91400AD5686 /* TagsMenuView.swift */; };
+		E24270EC2CB6DAE400AD5686 /* SmartFilterRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = E24270EB2CB6DAE400AD5686 /* SmartFilterRow.swift */; };
+		E24270EE2CB6DBA000AD5686 /* UserFilterRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = E24270ED2CB6DBA000AD5686 /* UserFilterRow.swift */; };
 		E26C71882C09241600CC4474 /* JobRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = E26C71872C09241600CC4474 /* JobRow.swift */; };
 		E27283B12C0E44B70011A906 /* JobView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E27283B02C0E44B60011A906 /* JobView.swift */; };
 		E27283B32C0E44C70011A906 /* NoJobView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E27283B22C0E44C70011A906 /* NoJobView.swift */; };
@@ -23,7 +32,6 @@
 		E2C643262C02076A00548E24 /* Tag-CoreDataHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2C643252C02076A00548E24 /* Tag-CoreDataHelpers.swift */; };
 		E2D576EB2C9C8A7300ADC16B /* Bundle-Decodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2D576EA2C9C8A7300ADC16B /* Bundle-Decodable.swift */; };
 		E2D576F22C9C8EC400ADC16B /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E2D576F02C9C8EC400ADC16B /* Colors.xcassets */; };
-		E2D576F32C9C8EC400ADC16B /* Awards.json in Resources */ = {isa = PBXBuildFile; fileRef = E2D576F12C9C8EC400ADC16B /* Awards.json */; };
 		E2D576F52C9C9A2000ADC16B /* Award.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2D576F42C9C9A2000ADC16B /* Award.swift */; };
 		E2D576F72C9CA09000ADC16B /* AwardsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2D576F62C9CA09000ADC16B /* AwardsView.swift */; };
 /* End PBXBuildFile section */
@@ -41,6 +49,16 @@
 		E22A388F2BFCCACA005ACBB5 /* SidebarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarView.swift; sourceTree = "<group>"; };
 		E22A38912BFCCAE6005ACBB5 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		E22A38932BFCCD26005ACBB5 /* Filter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Filter.swift; sourceTree = "<group>"; };
+		E24270DB2CB57CA500AD5686 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
+		E24270DD2CB5865500AD5686 /* InfoPlist.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = InfoPlist.xcstrings; sourceTree = "<group>"; };
+		E24270DF2CB5E14B00AD5686 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = en; path = en.lproj/Awards.json; sourceTree = "<group>"; };
+		E24270E22CB5E15700AD5686 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = es; path = es.lproj/Awards.json; sourceTree = "<group>"; };
+		E24270E32CB6D36300AD5686 /* SidebarViewToolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarViewToolbar.swift; sourceTree = "<group>"; };
+		E24270E52CB6D5E700AD5686 /* JobViewToolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobViewToolbar.swift; sourceTree = "<group>"; };
+		E24270E72CB6D6D500AD5686 /* ContentViewToolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewToolbar.swift; sourceTree = "<group>"; };
+		E24270E92CB6D91400AD5686 /* TagsMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagsMenuView.swift; sourceTree = "<group>"; };
+		E24270EB2CB6DAE400AD5686 /* SmartFilterRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartFilterRow.swift; sourceTree = "<group>"; };
+		E24270ED2CB6DBA000AD5686 /* UserFilterRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserFilterRow.swift; sourceTree = "<group>"; };
 		E26C71872C09241600CC4474 /* JobRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobRow.swift; sourceTree = "<group>"; };
 		E27283B02C0E44B60011A906 /* JobView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobView.swift; sourceTree = "<group>"; };
 		E27283B22C0E44C70011A906 /* NoJobView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoJobView.swift; sourceTree = "<group>"; };
@@ -48,7 +66,6 @@
 		E2C643252C02076A00548E24 /* Tag-CoreDataHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Tag-CoreDataHelpers.swift"; sourceTree = "<group>"; };
 		E2D576EA2C9C8A7300ADC16B /* Bundle-Decodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle-Decodable.swift"; sourceTree = "<group>"; };
 		E2D576F02C9C8EC400ADC16B /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
-		E2D576F12C9C8EC400ADC16B /* Awards.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Awards.json; sourceTree = "<group>"; };
 		E2D576F42C9C9A2000ADC16B /* Award.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Award.swift; sourceTree = "<group>"; };
 		E2D576F62C9CA09000ADC16B /* AwardsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AwardsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -87,19 +104,27 @@
 				E22A387A2BFCC56B005ACBB5 /* JobJourneyApp.swift */,
 				E22A38932BFCCD26005ACBB5 /* Filter.swift */,
 				E22A388F2BFCCACA005ACBB5 /* SidebarView.swift */,
+				E24270ED2CB6DBA000AD5686 /* UserFilterRow.swift */,
+				E24270EB2CB6DAE400AD5686 /* SmartFilterRow.swift */,
+				E24270E32CB6D36300AD5686 /* SidebarViewToolbar.swift */,
 				E2D576EA2C9C8A7300ADC16B /* Bundle-Decodable.swift */,
 				E22A388C2BFCC6E5005ACBB5 /* DataController.swift */,
 				E22A387C2BFCC56B005ACBB5 /* ContentView.swift */,
+				E24270E72CB6D6D500AD5686 /* ContentViewToolbar.swift */,
 				E26C71872C09241600CC4474 /* JobRow.swift */,
 				E22A38912BFCCAE6005ACBB5 /* DetailView.swift */,
 				E27283B02C0E44B60011A906 /* JobView.swift */,
+				E24270E92CB6D91400AD5686 /* TagsMenuView.swift */,
+				E24270E52CB6D5E700AD5686 /* JobViewToolbar.swift */,
 				E27283B22C0E44C70011A906 /* NoJobView.swift */,
 				E2D576F62C9CA09000ADC16B /* AwardsView.swift */,
 				E2D576F42C9C9A2000ADC16B /* Award.swift */,
 				E2C643232C02059600548E24 /* Job-CoreDataHelpers.swift */,
 				E2C643252C02076A00548E24 /* Tag-CoreDataHelpers.swift */,
 				E22A38892BFCC59A005ACBB5 /* Main.xcdatamodeld */,
-				E2D576F12C9C8EC400ADC16B /* Awards.json */,
+				E24270DD2CB5865500AD5686 /* InfoPlist.xcstrings */,
+				E24270DB2CB57CA500AD5686 /* Localizable.xcstrings */,
+				E24270E02CB5E14B00AD5686 /* Awards.json */,
 				E2D576F02C9C8EC400ADC16B /* Colors.xcassets */,
 				E22A387E2BFCC56D005ACBB5 /* Assets.xcassets */,
 				E22A38802BFCC56D005ACBB5 /* JobJourney.entitlements */,
@@ -144,7 +169,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1540;
-				LastUpgradeCheck = 1540;
+				LastUpgradeCheck = 1600;
 				TargetAttributes = {
 					E22A38762BFCC56B005ACBB5 = {
 						CreatedOnToolsVersion = 15.4;
@@ -158,6 +183,7 @@
 			knownRegions = (
 				en,
 				Base,
+				es,
 			);
 			mainGroup = E22A386E2BFCC56B005ACBB5;
 			productRefGroup = E22A38782BFCC56B005ACBB5 /* Products */;
@@ -174,8 +200,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E24270DE2CB5865500AD5686 /* InfoPlist.xcstrings in Resources */,
 				E2D576F22C9C8EC400ADC16B /* Colors.xcassets in Resources */,
-				E2D576F32C9C8EC400ADC16B /* Awards.json in Resources */,
+				E24270DC2CB57CA500AD5686 /* Localizable.xcstrings in Resources */,
+				E24270E12CB5E14B00AD5686 /* Awards.json in Resources */,
 				E22A38832BFCC56D005ACBB5 /* Preview Assets.xcassets in Resources */,
 				E22A387F2BFCC56D005ACBB5 /* Assets.xcassets in Resources */,
 			);
@@ -189,7 +217,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				E22A38942BFCCD26005ACBB5 /* Filter.swift in Sources */,
+				E24270EA2CB6D91400AD5686 /* TagsMenuView.swift in Sources */,
 				E2D576F52C9C9A2000ADC16B /* Award.swift in Sources */,
+				E24270E62CB6D5E700AD5686 /* JobViewToolbar.swift in Sources */,
+				E24270EC2CB6DAE400AD5686 /* SmartFilterRow.swift in Sources */,
 				E2D576F72C9CA09000ADC16B /* AwardsView.swift in Sources */,
 				E27283B32C0E44C70011A906 /* NoJobView.swift in Sources */,
 				E2C643262C02076A00548E24 /* Tag-CoreDataHelpers.swift in Sources */,
@@ -197,9 +228,12 @@
 				E2D576EB2C9C8A7300ADC16B /* Bundle-Decodable.swift in Sources */,
 				E22A388B2BFCC59A005ACBB5 /* Main.xcdatamodeld in Sources */,
 				E2C643242C02059600548E24 /* Job-CoreDataHelpers.swift in Sources */,
+				E24270E82CB6D6D500AD5686 /* ContentViewToolbar.swift in Sources */,
 				E22A38922BFCCAE6005ACBB5 /* DetailView.swift in Sources */,
 				E22A388D2BFCC6E5005ACBB5 /* DataController.swift in Sources */,
+				E24270E42CB6D36300AD5686 /* SidebarViewToolbar.swift in Sources */,
 				E22A38902BFCCACA005ACBB5 /* SidebarView.swift in Sources */,
+				E24270EE2CB6DBA000AD5686 /* UserFilterRow.swift in Sources */,
 				E22A387D2BFCC56B005ACBB5 /* ContentView.swift in Sources */,
 				E22A387B2BFCC56B005ACBB5 /* JobJourneyApp.swift in Sources */,
 				E27283B12C0E44B70011A906 /* JobView.swift in Sources */,
@@ -207,6 +241,18 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		E24270E02CB5E14B00AD5686 /* Awards.json */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E24270DF2CB5E14B00AD5686 /* en */,
+				E24270E22CB5E15700AD5686 /* es */,
+			);
+			name = Awards.json;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		E22A38842BFCC56D005ACBB5 /* Debug */ = {
@@ -243,6 +289,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -266,6 +313,7 @@
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -304,6 +352,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -320,6 +369,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_EMIT_LOC_STRINGS = YES;
 			};
 			name = Release;
 		};
@@ -331,6 +381,7 @@
 				CODE_SIGN_ENTITLEMENTS = JobJourney/JobJourney.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"JobJourney/Preview Content\"";
 				DEVELOPMENT_TEAM = GWK5U696JL;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -370,6 +421,7 @@
 				CODE_SIGN_ENTITLEMENTS = JobJourney/JobJourney.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"JobJourney/Preview Content\"";
 				DEVELOPMENT_TEAM = GWK5U696JL;
 				ENABLE_HARDENED_RUNTIME = YES;

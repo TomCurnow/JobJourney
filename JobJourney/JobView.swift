@@ -14,7 +14,7 @@ struct JobView: View {
     private var appliedDateText: String {
         if job.applied {
             if let appliedDate = job.appliedDate {
-                return " on " + appliedDate.formatted(date: .long, time: .shortened)
+                return appliedDate.formatted(date: .long, time: .shortened)
             }
         }
         return ""
@@ -31,32 +31,7 @@ struct JobView: View {
                         .foregroundStyle(.secondary)
                 }
                 
-                Menu {
-                    ForEach(job.jobTags) { tag in
-                        Button{
-                            job.removeFromTags(tag) // Method dded by xcode
-                        } label: {
-                            Label(tag.tagName, systemImage: "checkmark")
-                        }
-                    }
-                    
-                    let otherTags = dataController.missingTags(from: job)
-                    
-                    if otherTags.isEmpty == false {
-                        Divider()
-                        
-                        Section("Add Tags") {
-                            ForEach(otherTags) { tag in
-                                Button(tag.tagName) {
-                                    job.addToTags(tag) // Method dded by xcode
-                                }
-                            }
-                        }
-                    }
-                } label: {
-                    Text(job.jobTagsList)
-                        .multilineTextAlignment(.leading)
-                }
+                TagsMenuView(job: job)
             }
             
             Section {
@@ -76,20 +51,7 @@ struct JobView: View {
         }
         // Immediately calls a send on pressing enter having filled a text field
         .onSubmit(dataController.save)
-        .toolbar {
-            Menu {
-                Button {
-                    job.applied.toggle()
-                    job.appliedDate = job.applied ? .now : nil
-                    dataController.save()
-                } label: {
-                    Label(job.applied ? "Mark as Not Applied" : "Mark as Applied", systemImage: "paperplane.circle")
-                }
-                 
-            } label: {
-                Label("Actions", systemImage: "ellipsis.circle")
-            }
-        }
+        .toolbar {JobViewToolbar(job: job)}
     }
 }
 

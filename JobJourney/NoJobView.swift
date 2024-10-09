@@ -15,7 +15,7 @@ struct NoJobView: View {
             .font(.title)
             .foregroundStyle(.secondary)
         
-        Button("New Job Application", action: dataController.newJob)
+        Button("New job application", action: dataController.newJob)
     }
 }
 

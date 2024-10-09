@@ -18,7 +18,7 @@ struct Filter: Identifiable, Hashable {
         tag?.tagJobs.count ?? 0
     }
 
-    static var all = Filter(id: UUID(), name: "All Jobs", icon: "tray")
+    static var all = Filter(id: UUID(), name: "All Job Applications", icon: "tray")
     // Will show all jobs created in the past week
     static var recent = Filter(id: UUID(), name: "Recently Applied", icon: "clock", minAppliedDate: .now.addingTimeInterval(86400 * -7))
     

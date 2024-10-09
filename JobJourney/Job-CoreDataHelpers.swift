@@ -44,10 +44,10 @@ extension Job {
     
     var jobTagsList: String {
         // Tags is core datas generated property, so can be nil, unlike our jobtags
-        guard let tags else { return "No Tags" }
+        guard let tags else { return NSLocalizedString("No Tags", comment: "0 tags are assigned to the selected job") }
         
         if tags.count == 0 {
-            return "No Tags"
+            return NSLocalizedString("No Tags", comment: "0 tags are assigned to the selected job")
         } else {
             // 20:55
             return jobTags.map(\.tagName).formatted()
@@ -56,9 +56,9 @@ extension Job {
     
     var jobAppliedStatus: String {
         if applied {
-            "Applied"
+            NSLocalizedString("Applied", comment: "A job has been applied for")
         } else {
-            "Not Applied"
+            NSLocalizedString("Not Applied", comment: "A job has not been applied for")
         }
     }
     

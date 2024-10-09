@@ -256,14 +256,14 @@ class DataController: ObservableObject {
     func newTag() {
         let tag = Tag(context: container.viewContext)
         tag.id = UUID()
-        tag.name = "New Tag"
+        tag.name = NSLocalizedString("New tag", comment: "Create a new tag")
         save()
     }
     
     // Create a new job application
     func newJob() {
         let job = Job(context: container.viewContext)
-        job.title = "New Job"
+        job.title = NSLocalizedString("New job application", comment: "Create a new job application")
         job.creationDate = .now
         job.applied = false
         job.companyName = "ACME"

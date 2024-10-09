@@ -31,9 +31,9 @@ struct AwardsView: View {
                                 .scaledToFit()
                                 .padding()
                                 .frame(width: 100, height: 100)
-                                .foregroundColor(dataController.hasEarned(award: award) ? Color(award.color) : .secondary.opacity(0.5))
+                                .foregroundColor(color(for: award))
                         }
-                        .accessibilityLabel(dataController.hasEarned(award: award) ? "Unlocked \(award.name)" : "Locked")
+                        .accessibilityLabel(awardTitle)
                         .accessibilityHint(award.description)
                     }
                 }
@@ -46,12 +46,16 @@ struct AwardsView: View {
         }
     }
     
-    var awardTitle: String {
+    var awardTitle: LocalizedStringKey {
         if dataController.hasEarned(award: selectedAward) {
-            return "Unlocked: \((selectedAward.name))"
+            return "Unlocked: \(selectedAward.name)"
         } else {
             return "Locked"
         }
+    }
+    
+    func color(for award: Award) -> Color {
+        dataController.hasEarned(award: award) ? Color(award.color) : .secondary.opacity(0.5)
     }
 }
 

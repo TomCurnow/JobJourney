@@ -1,0 +1,162 @@
+[
+    {
+        "name": "Primeros Pasos",
+        "description": "Agrega tu primer trabajo.",
+        "color": "Custom Light Blue",
+        "criterion": "jobs",
+        "value": 1,
+        "image": "figure.walk"
+    },
+    {
+        "name": "Un Gran Comienzo",
+        "description": "Agrega 5 trabajos.",
+        "color": "Custom Light Blue",
+        "criterion": "jobs",
+        "value": 5,
+        "image": "hand.thumbsup.fill"
+    },
+    {
+        "name": "Subiendo de Nivel",
+        "description": "Agrega 10 trabajos.",
+        "color": "Custom Light Blue",
+        "criterion": "jobs",
+        "value": 10,
+        "image": "tray.and.arrow.up.fill"
+    },
+    {
+        "name": "Acelerando",
+        "description": "Agrega 25 trabajos.",
+        "color": "Custom Light Blue",
+        "criterion": "jobs",
+        "value": 25,
+        "image": "speedometer"
+    },
+    {
+        "name": "Haciendo Olas",
+        "description": "Agrega 50 trabajos.",
+        "color": "Custom Light Blue",
+        "criterion": "jobs",
+        "value": 50,
+        "image": "dot.radiowaves.left.and.right"
+    },
+    {
+        "name": "Gran Desempeño",
+        "description": "Agrega 100 trabajos.",
+        "color": "Custom Light Blue",
+        "criterion": "jobs",
+        "value": 100,
+        "image": "square.stack.3d.up.fill"
+    },
+    {
+        "name": "Desempeño Estrella",
+        "description": "Agrega 250 trabajos.",
+        "color": "Custom Light Blue",
+        "criterion": "jobs",
+        "value": 250,
+        "image": "star.circle.fill"
+    },
+    {
+        "name": "Desempeño Campeón",
+        "description": "Agrega 500 trabajos.",
+        "color": "Custom Light Blue",
+        "criterion": "jobs",
+        "value": 500,
+        "image": "crown.fill"
+    },
+    {
+        "name": "Marcando Casillas",
+        "description": "Postúlate a tu primer trabajo.",
+        "color": "Custom Green",
+        "criterion": "applied",
+        "value": 1,
+        "image": "checkmark.shield.fill"
+    },
+    {
+        "name": "¡Lo Estás Haciendo!",
+        "description": "Postúlate a 5 trabajos.",
+        "color": "Custom Green",
+        "criterion": "applied",
+        "value": 5,
+        "image": "guitars.fill"
+    },
+    {
+        "name": "La Guarida de Maggy",
+        "description": "Postúlate a 10 trabajos.",
+        "color": "Custom Green",
+        "criterion": "applied",
+        "value": 10,
+        "image": "10.square.fill"
+    },
+    {
+        "name": "¡Volando Alto!",
+        "description": "Postúlate a 25 trabajos.",
+        "color": "Custom Green",
+        "criterion": "applied",
+        "value": 25,
+        "image": "25.square.fill"
+    },
+    {
+        "name": "¡Diana!",
+        "description": "Postúlate a 50 trabajos.",
+        "color": "Custom Green",
+        "criterion": "applied",
+        "value": 50,
+        "image": "target"
+    },
+    {
+        "name": "¡Estás en Llamas!",
+        "description": "Postúlate a 100 trabajos.",
+        "color": "Custom Green",
+        "criterion": "applied",
+        "value": 100,
+        "image": "flame.fill"
+    },
+    {
+        "name": "Marcador de Casillas en Jefe",
+        "description": "Postúlate a 250 trabajos.",
+        "color": "Custom Green",
+        "criterion": "applied",
+        "value": 250,
+        "image": "text.badge.checkmark"
+    },
+    {
+        "name": "¡Boom!",
+        "description": "Postúlate a 500 trabajos.",
+        "color": "Custom Green",
+        "criterion": "applied",
+        "value": 500,
+        "image": "bolt.circle.fill"
+    },
+    {
+        "name": "Jugando con Etiquetas",
+        "description": "Has creado tu primera etiqueta.",
+        "color": "Custom Gold",
+        "criterion": "tags",
+        "value": 1,
+        "image": "tag.fill"
+    },
+    {
+        "name": "Lucha de Etiquetas",
+        "description": "Has creado 10 etiquetas.",
+        "color": "Custom Gold",
+        "criterion": "tags",
+        "value": 10,
+        "image": "tag.circle.fill"
+    },
+    {
+        "name": "Etiquetador Supremo",
+        "description": "Has creado 50 etiquetas.",
+        "color": "Custom Gold",
+        "criterion": "tags",
+        "value": 50,
+        "image": "square.grid.3x1.folder.fill.badge.plus"
+    },
+    {
+        "name": "Colaborador",
+        "description": "Has comprado el desbloqueo premium.",
+        "color": "Custom Purple",
+        "criterion": "unlock",
+        "value": 0,
+        "image": "dollarsign.square.fill"
+    }
+]
