@@ -7,33 +7,41 @@
 
 import CoreData
 
-// raw value is core data attribute name
+/// Defines available sorting types for jobs by Core Data attributes.
+///
+/// The raw valuesare Core Data attribute names.
 enum SortType: String {
     case dateCreated = "creationDate"
     case dateApplied = "appliedDate"
 }
 
+/// Represent status filters for job applications.
 enum Status {
     case all, applied, notApplied
 }
 
+/// An environment singleton responsible for managing our Core Data stack including handling saving,
+/// counting fetch requests, tracking orders, and dealing with sample data.
 class DataController: ObservableObject {
+    /// The CloudKit container used to store all app data.
     let container: NSPersistentCloudKitContainer
-    
+    /// The currently selected filter for displaying jobs, based on tags or criteria like "all" or "recent".
+    /// This filter determines the subset of jobs shown to the user.
     @Published var selectedFilter: Filter? = Filter.all
+    /// The job application that is currently selected for viewing or editing.
+    /// Allows users to see job details or modify information for a specific job.
     @Published var selectedJob: Job?
-    
+    /// Text used to filter jobs in the search field.
     @Published var filterText = ""
-    /// User's selected filter tags
+    /// Tags selected for filtering jobs.
     @Published var filterTokens = [Tag]()
-    
-    /// Global on/off for the filter
+    /// Controls whether filtering is enabled.
     @Published var filterEnabled = false
-    /// Current filter status
+    /// Tracks the current filter status (e.g., all, applied, not applied).
     @Published var filterStatus = Status.all
-    /// Sort type used by the filter
+    /// Specifies the sorting type for displayed jobs.
     @Published var sortType = SortType.dateCreated
-    /// Date sort method used by the filter
+    /// Indicates whether to sort jobs in descending order.
     @Published var sortNewestFirst = true
     
     private var saveTask: Task<Void, Error>?
@@ -65,10 +73,17 @@ class DataController: ObservableObject {
         return (try? container.viewContext.fetch(request).sorted()) ?? []
     }
     
+    /// Initialises a data controller either in memory (for testing use such as previewing),
+    /// or on permanent storage (for use in regular app runs).
+    ///
+    /// Defaults to permanent storage.
+    /// - Parameter inMemory: Whether to store this data in temporary memory or not
     init(inMemory: Bool = false) {
         container = NSPersistentCloudKitContainer(name: "Main")
         
-        // If true, data is not permenantly saved
+        // For testing and previewing purposes, we create a
+        // temporary, in-memory database by writing to /dev/null
+        // so our data is destroyed when the app finishes running.
         if inMemory {
             container.persistentStoreDescriptions.first?.url = URL(filePath: "/dev/null")
         }
@@ -78,7 +93,7 @@ class DataController: ObservableObject {
         
         // Manage changes to objects on a property by property basis
         // Core Data will compare each property individually, but if there’s
-        // a conflict it should prefer what is currently in memory (on device)
+        // a conflict it should prefer what is currently in memory (on device).
         container.viewContext.mergePolicy = NSMergePolicy.mergeByPropertyObjectTrump
         
         // Make an announcement when changes happen to storage by any code
@@ -87,7 +102,8 @@ class DataController: ObservableObject {
             forKey: NSPersistentStoreRemoteChangeNotificationPostOptionKey
         )
         
-        // When changes happen, please call remoteStoreChanged
+        // Watch for iCloud changes, update our local storage
+        // if a remote change hapoens.
         NotificationCenter.default.addObserver(
             forName: .NSPersistentStoreRemoteChange,
             object: container.persistentStoreCoordinator,
@@ -103,10 +119,13 @@ class DataController: ObservableObject {
         }
     }
     
+    /// Responds to notifications of changes in the persistent store.
+    /// - Parameter notification: The notification indicating remote store changes.
     func remoteStoreChanged(_ notification: Notification) {
         objectWillChange.send()
     }
     
+    /// Populates the Core Data stack with sample data for preview purposes.
     func createSampleData() {
         // Pool of data in RAM right now
         let viewContext = container.viewContext
@@ -153,7 +172,12 @@ class DataController: ObservableObject {
         try? viewContext.save()
     }
     
-    // So can call save, and will only be performed if changes have been made to the container
+    /// Saves any changes in the Core Data context immediately.
+    ///
+    /// This function cancels any pending save tasks before performing the save operation.
+    /// If there are changes in the Core Data context, it attempts to save them.
+    ///
+    /// - Note: If there are no changes in the context, no save operation is performed.
     func save() {
         // Cancel any queued saved tasks as about to save immediately
         saveTask?.cancel()
@@ -163,7 +187,7 @@ class DataController: ObservableObject {
         }
     }
     
-    // So, save will be called every 3 seconds unless queSave is called
+    /// Queues a save operation to occur after a 3-second delay. Cancels any previously queued saves.
     func queueSave() {
         saveTask?.cancel()
 
@@ -174,30 +198,41 @@ class DataController: ObservableObject {
         }
     }
     
-    // Single class to delete any object (entity) in our container
+    /// Deletes a specified Core Data object from the context and saves changes.
+    /// - Parameter object: The Core Data object to delete.
     func delete(_ object: NSManagedObject) {
         objectWillChange.send() // Tell the world it is about to be deleted
         container.viewContext.delete(object)
         save()
     }
 
-    // Used by deleteAll to delete all entities in the container
+    /// Performs a batch delete of all objects that match the specified fetch request.
+    ///
+    /// This function executes a batch delete on the view context and merges changes back
+    /// into the context to keep it synchronized.
+    /// - Parameter fetchRequest: The fetch request used to specify the objects to delete.
     private func delete(_ fetchRequest: NSFetchRequest<NSFetchRequestResult>) {
+        // Create a batch delete request with the specified fetch request
         let batchDeleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+        
+        // Set the result type to return object IDs of deleted objects
         batchDeleteRequest.resultType = .resultTypeObjectIDs // tell batch delete request what will be deleted
 
-        // execute the fetch request, which in this case is a batch delete request
-        // Get a batch delete result back, hence the type cast
+        // Execute the batch delete request on the view context
         if let delete = try? container.viewContext.execute(batchDeleteRequest) as? NSBatchDeleteResult {
+            
+            // Extract the object IDs of the deleted objects from the delete result
             let changes = [NSDeletedObjectsKey: delete.result as? [NSManagedObjectID] ?? []]
+            
+            // IMPORTANT: Merge the changes back into the view context to keep it in sync
             NSManagedObjectContext.mergeChanges(
                 fromRemoteContextSave: changes,
                 into: [container.viewContext]
-            ) // make sure store and view context are in sync
+            )
         }
     }
     
-    // Primarily for testing purposes
+    /// Deletes all `Tag` and `Job` entities from the context.  Used for testing.
     func deleteAll() {
         let request1: NSFetchRequest<NSFetchRequestResult> = Tag.fetchRequest()
         delete(request1)
@@ -208,8 +243,11 @@ class DataController: ObservableObject {
         save()
     }
     
-    // Gets the tags not assigned to a given job
-    // Used in the JOb View to show unselected tags
+    /// Retrieves tags that are not associated with a specified job.
+    ///
+    /// Used to show tags which can be assigned to a specified job.
+    /// - Parameter job: The job to compare against.
+    /// - Returns: An array of tags that are not associated with the specified job.
     func missingTags(from job: Job) -> [Tag] {
         let request = Tag.fetchRequest()
         let allTags = (try? container.viewContext.fetch(request)) ?? []
@@ -220,7 +258,14 @@ class DataController: ObservableObject {
         return difference.sorted()
     }
     
-    // Gets all jobs for the current selected filter
+    /// Retrieves a list of `Job` objects based on the currently selected filter, search text,
+    /// filter tokens, and sorting options.
+    ///
+    /// This function constructs a set of predicates and sorting criteria according to the user's
+    /// selected filter, search text, and advanced filter options, then fetches and returns the
+    /// matching `Job` objects from Core Data.
+    ///
+    /// - Returns: An array of `Job` objects that match the selected filter criteria.
     func jobsForSelectedFilter() -> [Job] {
         let filter = selectedFilter ?? .all
         var predicates = [NSPredicate]()
@@ -274,7 +319,12 @@ class DataController: ObservableObject {
         return allJobs
     }
     
-    // Create a new tag
+    /// Creates a new tag in the Core Data context.
+    ///
+    /// This function initializes a new `Tag` object with a unique identifier and a default name.
+    /// It then saves the context to persist the changes.
+    ///
+    /// - Important: The name for the new tag is localized to support different languages.
     func newTag() {
         let tag = Tag(context: container.viewContext)
         tag.id = UUID()
@@ -282,7 +332,15 @@ class DataController: ObservableObject {
         save()
     }
     
-    // Create a new job application
+    /// Creates a new job application in the Core Data context.
+    ///
+    /// This function initializes a new `Job` object with default values for title, creation date,
+    /// applied status, and company name. If a user-created tag is currently selected, the new job
+    /// is associated with that tag to ensure it appears in the user's job list.
+    ///
+    /// The new job selected once created.
+    ///
+    /// - Note: The title for the new job is localized to support different languages.
     func newJob() {
         let job = Job(context: container.viewContext)
         job.title = NSLocalizedString("New job application", comment: "Create a new job application")
@@ -290,6 +348,9 @@ class DataController: ObservableObject {
         job.applied = false
         job.companyName = "ACME"
         
+        // If we are currently browsing a user created tag, imediately
+        // add this new issue to the tag otherwise it won't appear in
+        // the list of jobs they see.
         if let tag = selectedFilter?.tag {
             job.addToTags(tag)
         }
@@ -298,12 +359,29 @@ class DataController: ObservableObject {
         selectedJob = job
     }
     
-    // returns a count for the number of results of a given query
+    /// Returns the count of results for a given fetch request.
+    ///
+    /// This function executes a fetch request to count the number of matching objects in the Core Data
+    /// context. It returns `0` if the fetch fails or if there are no matches.
+    ///
+    /// - Parameter fetchRequest: The fetch request to count results for.
+    /// - Returns: The count of objects matching the fetch request.
     func count<T>(for fetchRequest: NSFetchRequest<T>) -> Int {
         (try? container.viewContext.count(for: fetchRequest)) ?? 0
     }
     
-    // Returns true or false for whether the user has earned the given award
+    /// Determines if the user has earned a specified award.
+    ///
+    /// This function only supports certain award criteria:
+    ///   - "jobs": The user must have created a minimum number of job applications.
+    ///   - "applied": The user must have applied to a minimum number of jobs.
+    ///   - "tags": The user must have created a minimum number of tags.
+    ///   - "unlock": Reserved for future development.
+    ///
+    /// - Parameter award: The `Award` object containing a criterion and value threshold.
+    /// - Returns: `true` if the user meets or exceeds the specified criterion value for the award; otherwise, `false`.
+    ///
+    /// - Important: If the award's criterion is unknown, this function terminates with an error.
     func hasEarned(award: Award) -> Bool {
         switch award.criterion {
         case "jobs":
