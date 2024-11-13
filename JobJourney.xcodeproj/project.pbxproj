@@ -36,6 +36,16 @@
 		E2D576F72C9CA09000ADC16B /* AwardsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2D576F62C9CA09000ADC16B /* AwardsView.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		E2F65B1D2CE4D6F500BC926A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E22A386F2BFCC56B005ACBB5 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E22A38762BFCC56B005ACBB5;
+			remoteInfo = JobJourney;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		E22A38772BFCC56B005ACBB5 /* JobJourney.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JobJourney.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E22A387A2BFCC56B005ACBB5 /* JobJourneyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobJourneyApp.swift; sourceTree = "<group>"; };
@@ -68,10 +78,22 @@
 		E2D576F02C9C8EC400ADC16B /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		E2D576F42C9C9A2000ADC16B /* Award.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Award.swift; sourceTree = "<group>"; };
 		E2D576F62C9CA09000ADC16B /* AwardsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AwardsView.swift; sourceTree = "<group>"; };
+		E2F65B192CE4D6F500BC926A /* JobJourneyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JobJourneyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		E2F65B1A2CE4D6F500BC926A /* JobJourneyTests */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = JobJourneyTests; sourceTree = "<group>"; };
+/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		E22A38742BFCC56B005ACBB5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E2F65B162CE4D6F500BC926A /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -85,6 +107,7 @@
 			isa = PBXGroup;
 			children = (
 				E22A38792BFCC56B005ACBB5 /* JobJourney */,
+				E2F65B1A2CE4D6F500BC926A /* JobJourneyTests */,
 				E22A38782BFCC56B005ACBB5 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -93,6 +116,7 @@
 			isa = PBXGroup;
 			children = (
 				E22A38772BFCC56B005ACBB5 /* JobJourney.app */,
+				E2F65B192CE4D6F500BC926A /* JobJourneyTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -226,6 +250,29 @@
 			productReference = E22A38772BFCC56B005ACBB5 /* JobJourney.app */;
 			productType = "com.apple.product-type.application";
 		};
+		E2F65B182CE4D6F500BC926A /* JobJourneyTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E2F65B1F2CE4D6F500BC926A /* Build configuration list for PBXNativeTarget "JobJourneyTests" */;
+			buildPhases = (
+				E2F65B152CE4D6F500BC926A /* Sources */,
+				E2F65B162CE4D6F500BC926A /* Frameworks */,
+				E2F65B172CE4D6F500BC926A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E2F65B1E2CE4D6F500BC926A /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				E2F65B1A2CE4D6F500BC926A /* JobJourneyTests */,
+			);
+			name = JobJourneyTests;
+			packageProductDependencies = (
+			);
+			productName = JobJourneyTests;
+			productReference = E2F65B192CE4D6F500BC926A /* JobJourneyTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -233,11 +280,15 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1540;
+				LastSwiftUpdateCheck = 1610;
 				LastUpgradeCheck = 1600;
 				TargetAttributes = {
 					E22A38762BFCC56B005ACBB5 = {
 						CreatedOnToolsVersion = 15.4;
+					};
+					E2F65B182CE4D6F500BC926A = {
+						CreatedOnToolsVersion = 16.1;
+						TestTargetID = E22A38762BFCC56B005ACBB5;
 					};
 				};
 			};
@@ -258,6 +309,7 @@
 			projectRoot = "";
 			targets = (
 				E22A38762BFCC56B005ACBB5 /* JobJourney */,
+				E2F65B182CE4D6F500BC926A /* JobJourneyTests */,
 			);
 		};
 /* End PBXProject section */
@@ -273,6 +325,13 @@
 				E24270E12CB5E14B00AD5686 /* Awards.json in Resources */,
 				E22A38832BFCC56D005ACBB5 /* Preview Assets.xcassets in Resources */,
 				E22A387F2BFCC56D005ACBB5 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E2F65B172CE4D6F500BC926A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -328,7 +387,22 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		E2F65B152CE4D6F500BC926A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		E2F65B1E2CE4D6F500BC926A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E22A38762BFCC56B005ACBB5 /* JobJourney */;
+			targetProxy = E2F65B1D2CE4D6F500BC926A /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		E24270E02CB5E14B00AD5686 /* Awards.json */ = {
@@ -541,6 +615,49 @@
 			};
 			name = Release;
 		};
+		E2F65B202CE4D6F500BC926A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = GWK5U696JL;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.1;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.tomcurnow.JobJourneyTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/JobJourney.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/JobJourney";
+			};
+			name = Debug;
+		};
+		E2F65B212CE4D6F500BC926A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = GWK5U696JL;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.1;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.tomcurnow.JobJourneyTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/JobJourney.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/JobJourney";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -558,6 +675,15 @@
 			buildConfigurations = (
 				E22A38872BFCC56D005ACBB5 /* Debug */,
 				E22A38882BFCC56D005ACBB5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E2F65B1F2CE4D6F500BC926A /* Build configuration list for PBXNativeTarget "JobJourneyTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E2F65B202CE4D6F500BC926A /* Debug */,
+				E2F65B212CE4D6F500BC926A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

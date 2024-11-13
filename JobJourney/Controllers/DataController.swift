@@ -1,10 +1,3 @@
-//
-//  DataController.swift
-//  JobJourney
-//
-//  Created by Tom Curnow on 21/05/2024.
-//
-
 import CoreData
 
 /// Defines available sorting types for jobs by Core Data attributes.
@@ -53,7 +46,6 @@ class DataController: ObservableObject {
     }()
     
     // Getting a list of tags which match the first letters types in the search field
-    
     var suggestedFilterTokens: [Tag] {
         guard filterText.starts(with: "#") else {
             return []
