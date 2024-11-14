@@ -11,13 +11,6 @@ import CoreData
 import UIKit
 
 struct JobJourneyTests {
-//    var dataController: DataController
-//    var managedObjectContext: NSManagedObjectContext
-//    
-//    init() {
-//        self.dataController = DataController(inMemory: true)
-//        self.managedObjectContext = dataController.container.viewContext
-//    }
     
     @Test(arguments: [
         "Custom Dark Blue", "Custom Dark Gray", "Custom Gold", "Custom Gray", "Custom Green",
