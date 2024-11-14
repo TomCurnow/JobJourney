@@ -31,7 +31,7 @@ struct AwardsTests {
         }
     }
 
-    @Test(.disabled("Core Data is giving wacky errors.")) func creatingJobsUnlocksAwards() throws {
+    @Test(.disabled("Core Data is giving wacky errors due to nil managed object context.")) func creatingJobsUnlocksAwards() throws {
         let values = [1, 5, 10, 25, 50, 100, 250, 500]
         
         for (count, value) in values.enumerated() {
