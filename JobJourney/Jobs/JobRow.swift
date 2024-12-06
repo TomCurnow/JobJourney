@@ -37,6 +37,7 @@ struct JobRow: View {
                 .foregroundStyle(.secondary)
             }
         }
+        .accessibilityIdentifier(job.jobTitle)
     }
 }
 

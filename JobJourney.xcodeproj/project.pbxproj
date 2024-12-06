@@ -44,6 +44,13 @@
 			remoteGlobalIDString = E22A38762BFCC56B005ACBB5;
 			remoteInfo = JobJourney;
 		};
+		E2FDED4E2D008D51005DFAD5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E22A386F2BFCC56B005ACBB5 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E22A38762BFCC56B005ACBB5;
+			remoteInfo = JobJourney;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
@@ -79,10 +86,12 @@
 		E2D576F42C9C9A2000ADC16B /* Award.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Award.swift; sourceTree = "<group>"; };
 		E2D576F62C9CA09000ADC16B /* AwardsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AwardsView.swift; sourceTree = "<group>"; };
 		E2F65B192CE4D6F500BC926A /* JobJourneyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JobJourneyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		E2FDED482D008D51005DFAD5 /* JobJourneyUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JobJourneyUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		E2F65B1A2CE4D6F500BC926A /* JobJourneyTests */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = JobJourneyTests; sourceTree = "<group>"; };
+		E2FDED492D008D51005DFAD5 /* JobJourneyUITests */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = JobJourneyUITests; sourceTree = "<group>"; };
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +109,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		E2FDED452D008D51005DFAD5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -108,6 +124,7 @@
 			children = (
 				E22A38792BFCC56B005ACBB5 /* JobJourney */,
 				E2F65B1A2CE4D6F500BC926A /* JobJourneyTests */,
+				E2FDED492D008D51005DFAD5 /* JobJourneyUITests */,
 				E22A38782BFCC56B005ACBB5 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -117,6 +134,7 @@
 			children = (
 				E22A38772BFCC56B005ACBB5 /* JobJourney.app */,
 				E2F65B192CE4D6F500BC926A /* JobJourneyTests.xctest */,
+				E2FDED482D008D51005DFAD5 /* JobJourneyUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -181,8 +199,8 @@
 			isa = PBXGroup;
 			children = (
 				E22A38932BFCCD26005ACBB5 /* Filter.swift */,
-				E22A388F2BFCCACA005ACBB5 /* SidebarView.swift */,
 				E24270ED2CB6DBA000AD5686 /* UserFilterRow.swift */,
+				E22A388F2BFCCACA005ACBB5 /* SidebarView.swift */,
 				E24270EB2CB6DAE400AD5686 /* SmartFilterRow.swift */,
 				E24270E32CB6D36300AD5686 /* SidebarViewToolbar.swift */,
 			);
@@ -273,6 +291,29 @@
 			productReference = E2F65B192CE4D6F500BC926A /* JobJourneyTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		E2FDED472D008D51005DFAD5 /* JobJourneyUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E2FDED522D008D51005DFAD5 /* Build configuration list for PBXNativeTarget "JobJourneyUITests" */;
+			buildPhases = (
+				E2FDED442D008D51005DFAD5 /* Sources */,
+				E2FDED452D008D51005DFAD5 /* Frameworks */,
+				E2FDED462D008D51005DFAD5 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E2FDED4F2D008D51005DFAD5 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				E2FDED492D008D51005DFAD5 /* JobJourneyUITests */,
+			);
+			name = JobJourneyUITests;
+			packageProductDependencies = (
+			);
+			productName = JobJourneyUITests;
+			productReference = E2FDED482D008D51005DFAD5 /* JobJourneyUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -287,6 +328,10 @@
 						CreatedOnToolsVersion = 15.4;
 					};
 					E2F65B182CE4D6F500BC926A = {
+						CreatedOnToolsVersion = 16.1;
+						TestTargetID = E22A38762BFCC56B005ACBB5;
+					};
+					E2FDED472D008D51005DFAD5 = {
 						CreatedOnToolsVersion = 16.1;
 						TestTargetID = E22A38762BFCC56B005ACBB5;
 					};
@@ -310,6 +355,7 @@
 			targets = (
 				E22A38762BFCC56B005ACBB5 /* JobJourney */,
 				E2F65B182CE4D6F500BC926A /* JobJourneyTests */,
+				E2FDED472D008D51005DFAD5 /* JobJourneyUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -329,6 +375,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		E2F65B172CE4D6F500BC926A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E2FDED462D008D51005DFAD5 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -394,6 +447,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		E2FDED442D008D51005DFAD5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -401,6 +461,11 @@
 			isa = PBXTargetDependency;
 			target = E22A38762BFCC56B005ACBB5 /* JobJourney */;
 			targetProxy = E2F65B1D2CE4D6F500BC926A /* PBXContainerItemProxy */;
+		};
+		E2FDED4F2D008D51005DFAD5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E22A38762BFCC56B005ACBB5 /* JobJourney */;
+			targetProxy = E2FDED4E2D008D51005DFAD5 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -658,6 +723,47 @@
 			};
 			name = Release;
 		};
+		E2FDED502D008D51005DFAD5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = GWK5U696JL;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.1;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.tomcurnow.JobJourneyUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = JobJourney;
+			};
+			name = Debug;
+		};
+		E2FDED512D008D51005DFAD5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = GWK5U696JL;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.1;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.tomcurnow.JobJourneyUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = JobJourney;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -684,6 +790,15 @@
 			buildConfigurations = (
 				E2F65B202CE4D6F500BC926A /* Debug */,
 				E2F65B212CE4D6F500BC926A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E2FDED522D008D51005DFAD5 /* Build configuration list for PBXNativeTarget "JobJourneyUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E2FDED502D008D51005DFAD5 /* Debug */,
+				E2FDED512D008D51005DFAD5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

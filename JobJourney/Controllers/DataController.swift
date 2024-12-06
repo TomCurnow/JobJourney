@@ -1,4 +1,5 @@
 import CoreData
+import SwiftUI
 
 /// Defines available sorting types for jobs by Core Data attributes.
 ///
@@ -120,6 +121,14 @@ class DataController: ObservableObject {
             if let error {
                 fatalError("Fatal error loading store: \(error.localizedDescription)")
             }
+            
+            // If enable-testing set as a launch argument, create a clean slate
+            #if DEBUG
+            if CommandLine.arguments.contains("enable-testing") {
+                self.deleteAll() // Delete all jobs and tags
+                UIView.setAnimationsEnabled(false) // Don't have to do this, but makes UI testing faster
+            }
+            #endif
         }
     }
     

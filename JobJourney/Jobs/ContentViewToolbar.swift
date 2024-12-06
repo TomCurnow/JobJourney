@@ -44,7 +44,7 @@ struct ContentViewToolbar: View {
         }
         
         Button(action: dataController.newJob) {
-            Label("New job application", systemImage: "square.and.pencil")
+            Label("New Job Application", systemImage: "square.and.pencil")
         }
     }
 }
